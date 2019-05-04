@@ -1,3 +1,9 @@
 <?php
 /** @var \Main\View\Base $this */
+$groups = \Main\Model\Entry\Group::getRepository()->findAll();
 ?>
+<ul>
+<?php foreach ($groups as $group): ?>
+    <li><?= $this->linkTo($group, $group) ?></li>
+<?php endforeach; ?>
+</ul>
