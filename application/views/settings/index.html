@@ -1,0 +1,9 @@
+<?php
+/** @var \Main\View\Base $this */
+$form = $this->createBootstrapForm($this->form, true);
+?>
+<?= $form->start() ?>
+<?= $form->checkboxGroup('groups') ?>
+<?= $form->checkboxGroup('difficulties') ?>
+<?= $form->button('submit') ?>
+<?= $form->end() ?>
