@@ -51,7 +51,7 @@ class Settings extends Base
     public function hasGroup($id)
     {
         foreach ($this->groups as $group) {
-            if ($group === $id) {
+            if ($group == $id) {
                 return true;
             }
         }
@@ -79,7 +79,7 @@ class Settings extends Base
     public function delFromGroups($id)
     {
         foreach ($this->groups as $key => $group) {
-            if ($group === $id) {
+            if ($group == $id) {
                 unset($this->groups[ $key ]);
             }
         }
