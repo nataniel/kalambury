@@ -4,6 +4,7 @@ namespace Main\Controller;
 use E4u\Application\Controller as E4uController;
 use E4u\Application\View as E4uView;
 use Main\Configuration;
+use Main\Model\Settings;
 use Main\View;
 
 abstract class AbstractController extends E4uController
@@ -26,5 +27,15 @@ abstract class AbstractController extends E4uController
     public function getView()
     {
         return parent::getView();
+    }
+
+    /**
+     * @return Settings
+     */
+    public function getCurrentSettings()
+    {
+        return new Settings(!empty($_SESSION['settings'])
+            ? $_SESSION['settings']
+            : Settings::defaultOptions());
     }
 }

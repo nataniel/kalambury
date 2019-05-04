@@ -5,13 +5,22 @@ $form = $this->createBootstrapForm($this->form);
 /** @var \Main\Model\Entry\Group $group */
 $group = $this->group;
 $entries = $group->getEntries();
+
+/** @var \Main\Model\Settings $settings */
+$settings = $this->settings;
 ?>
+<small class="float-right">
+<?= $settings->hasGroup($group->id())
+    ? $this->linkTo('Usuń grupę z moich ustawień', '/settings/remove-group/' . $group->id(), [ 'class' => 'btn btn-outline-danger', 'back' => true, ])
+    : $this->linkTo('Dodaj grupę do moich ustawień', '/settings/add-group/' . $group->id(), [ 'class' => 'btn btn-outline-success', 'back' => true, ]) ?>
+</small>
 <h1><?= $this->getTitle() ?></h1>
+
 <table class="table">
 <?php foreach ($entries as $entry): ?>
     <tr>
         <td><?= $entry->getName() ?></td>
-        <td><?= $entry->getDifficulty() ?></td>
+        <td><?= $this->t($entry->showDifficulty()) ?></td>
     </tr>
 <?php endforeach; ?>
 </table>

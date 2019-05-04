@@ -45,6 +45,49 @@ class Settings extends Base
     }
 
     /**
+     * @param  int $id
+     * @return bool
+     */
+    public function hasGroup($id)
+    {
+        foreach ($this->groups as $group) {
+            if ($group === $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param  int $id
+     * @return $this
+     */
+    public function addToGroups($id)
+    {
+        if (!$this->hasGroup($id)) {
+            $this->groups[] = $id;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param  int $id
+     * @return $this
+     */
+    public function delFromGroups($id)
+    {
+        foreach ($this->groups as $key => $group) {
+            if ($group === $id) {
+                unset($this->groups[ $key ]);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return $this
      */
     public function save()
@@ -70,7 +113,7 @@ class Settings extends Base
      */
     public static function defaultDifficulties()
     {
-        return [ Entry::DIFFICULTY_LOW, Entry::DIFFICULTY_MEDIUM, Entry::DIFFICULTY_HIGH, ];
+        return [ Entry::DIFFICULTY_LOW, Entry::DIFFICULTY_MEDIUM, ];
     }
 
     /**
@@ -79,7 +122,7 @@ class Settings extends Base
     private static function defaultGroups()
     {
         $options = [];
-        foreach (Entry\Group::findAll() as $group) {
+        foreach (Entry\Group::findBy([ 'public' => true, ]) as $group) {
             $options[] = $group->id();
         }
 

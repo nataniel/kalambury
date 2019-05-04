@@ -28,6 +28,7 @@ class GroupsController extends AbstractController
             'title' => $group->getName(),
             'form' => $createEntry,
             'group' => $group,
+            'settings' => $this->getCurrentSettings(),
         ];
     }
 

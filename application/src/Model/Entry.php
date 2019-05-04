@@ -60,6 +60,14 @@ class Entry extends Entity
     }
 
     /**
+     * @return string
+     */
+    public function showDifficulty()
+    {
+        return 'difficulty.' . $this->difficulty;
+    }
+
+    /**
      * @return Entry\Repository|EntityRepository
      */
     public static function getRepository()
