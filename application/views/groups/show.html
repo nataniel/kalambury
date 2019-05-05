@@ -14,9 +14,11 @@ $settings = $this->settings;
     ? $this->linkTo('Usuń grupę z moich ustawień', '/settings/remove-group/' . $group->id(), [ 'class' => 'btn btn-outline-danger', 'back' => true, ])
     : $this->linkTo('Dodaj grupę do moich ustawień', '/settings/add-group/' . $group->id(), [ 'class' => 'btn btn-outline-success', 'back' => true, ]) ?>
 </small>
-<h1><?= $this->getTitle() ?></h1>
+<h1><?= $this->getTitle() ?>
+    <span class="badge badge-secondary"><?= count($entries) ?></span>
+</h1>
 
-<table class="table">
+<table class="table d-none">
 <?php foreach ($entries as $entry): ?>
     <tr>
         <td><?= $entry->getName() ?></td>

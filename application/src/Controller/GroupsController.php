@@ -1,6 +1,7 @@
 <?php
 namespace Main\Controller;
 
+use E4u\Application\View;
 use E4u\Response\Redirect;
 use Main\Form\CreateEntry;
 use Main\Model\Entry;
@@ -16,12 +17,19 @@ class GroupsController extends AbstractController
     {
         $group = $this->getGroupFromParam();
 
-        $entry = new Entry();
-        $createEntry = new CreateEntry($this->getRequest(), [ 'entry' => $entry, ]);
+        $new = new Entry();
+        $createEntry = new CreateEntry($this->getRequest(), [ 'entry' => $new, ]);
         if ($createEntry->isValid()) {
-            $group->addToEntries($entry);
-            $entry->save();
-            return $this->redirectTo($group);
+
+            foreach ($group->getEntries() as $entry) {
+                if ($entry->getName() == $new->getName()) {
+                    return $this->redirectTo($group, 'Taki wpis już istnieje.', View::FLASH_ERROR);
+                }
+            }
+
+            $group->addToEntries($new);
+            $new->save();
+            return $this->redirectTo($group, 'Wpis został dodany.', View::FLASH_SUCCESS);
         }
 
         return [
