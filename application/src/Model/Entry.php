@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 use E4u\Model\Entity;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Main\Model\Entry\Repository")
  * @Table(name="entries")
  */
 class Entry extends Entity
@@ -17,6 +17,9 @@ class Entry extends Entity
 
     /** @Column(type="string") */
     protected $name;
+
+    /** @Column(type="text") */
+    protected $description;
 
     /** @Column(type="integer") */
     protected $difficulty = Entry::DIFFICULTY_MEDIUM;
@@ -41,6 +44,14 @@ class Entry extends Entity
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

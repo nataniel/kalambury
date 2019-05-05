@@ -17,7 +17,8 @@
   },
   "require": {
     "php": "^5.6 || ^7.0",
-    "nataniel/e4u-framework": "dev-master"
+    "nataniel/e4u-framework": "dev-master",
+    "beberlei/DoctrineExtensions": "^1.2"
   },
   "autoload": {
     "psr-4": {
