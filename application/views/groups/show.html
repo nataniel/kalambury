@@ -6,23 +6,33 @@ $form = $this->createBootstrapForm($this->form);
 $group = $this->group;
 $entries = $group->getEntries();
 
+$difficulties = [
+    \Main\Model\Entry::DIFFICULTY_LOW => 0,
+    \Main\Model\Entry::DIFFICULTY_MEDIUM => 0,
+    \Main\Model\Entry::DIFFICULTY_HIGH => 0,
+];
+
+foreach ($entries as $entry) {
+    $difficulties[ $entry->getDifficulty() ]++;
+}
+
 /** @var \Main\Model\Settings $settings */
 $settings = $this->settings;
 ?>
-<small class="float-right">
+<p class="text-right">
 <?= $settings->hasGroup($group->id())
-    ? $this->linkTo('Usuń grupę z moich ustawień', '/settings/remove-group/' . $group->id(), [ 'class' => 'btn btn-outline-danger', 'back' => true, ])
-    : $this->linkTo('Dodaj grupę do moich ustawień', '/settings/add-group/' . $group->id(), [ 'class' => 'btn btn-outline-success', 'back' => true, ]) ?>
-</small>
+    ? $this->linkTo('Usuń tę grupę z moich ustawień', '/settings/remove-group/' . $group->id(), [ 'class' => 'btn btn-outline-danger', 'back' => true, ])
+    : $this->linkTo('Dodaj tę grupę do moich ustawień', '/settings/add-group/' . $group->id(), [ 'class' => 'btn btn-outline-success', 'back' => true, ]) ?>
+</p><hr />
 <h1><?= $this->getTitle() ?>
     <span class="badge badge-secondary"><?= count($entries) ?></span>
 </h1>
 
-<table class="table d-none">
-<?php foreach ($entries as $entry): ?>
+<table class="table">
+<?php foreach ($difficulties as $difficulty => $count): ?>
     <tr>
-        <td><?= $entry->getName() ?></td>
-        <td><?= $this->t($entry->showDifficulty()) ?></td>
+        <td><?= $this->t('difficulty.' . $difficulty) ?></td>
+        <td><?= $count ?></td>
     </tr>
 <?php endforeach; ?>
 </table>
