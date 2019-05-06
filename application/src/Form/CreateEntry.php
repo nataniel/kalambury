@@ -16,6 +16,11 @@ class CreateEntry extends Form\Base
                 'model' => $this->getModel('entry'),
             ]),
 
+            new Form\Element\TextField('description', [
+                'label' => 'Opis hasła',
+                'model' => $this->getModel('entry'),
+            ]),
+
             new Form\Element\Select('difficulty', [
                 'label' => 'Poziom trudności',
                 'required' => 'Określ poziom trudności hasła.',
