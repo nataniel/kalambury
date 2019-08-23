@@ -40,10 +40,25 @@ return [
     ],
 
     /**
+     * Random entry
+     */
+    'random' => [
+        'type' => E4u\Application\Router\Literal::class,
+        'options' => [
+            'route'    => '/random',
+            'defaults' => [
+                'module'     => null,
+                'controller' => 'entries',
+                'action'     => 'random',
+            ],
+        ],
+    ],
+
+    /**
      * Reset doctrine cache
      */
     'reset' => [
-        'type' => \E4u\Application\Router\Literal::class,
+        'type' => E4u\Application\Router\Literal::class,
         'options' => [
             'route'    => '/reset',
             'defaults' => [

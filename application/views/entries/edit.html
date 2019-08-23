@@ -1,0 +1,12 @@
+<?php
+/** @var Main\View\Base $this */
+$form = $this->createBootstrapForm($this->form);
+?>
+<?= $form->start() ?>
+<div class="form-row">
+    <div class="col"><?= $form->text('name') ?></div>
+    <div class="col-3"><?= $form->select('difficulty') ?></div>
+</div>
+<?= $form->textarea('description') ?>
+<?= $form->button('submit') ?>
+<?= $form->end() ?>

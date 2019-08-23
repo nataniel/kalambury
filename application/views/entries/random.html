@@ -1,9 +1,9 @@
 <?php
-/** @var \Main\View\Base $this */
-/** @var \Main\Model\Entry $entry */
+/** @var Main\View\Base $this */
+/** @var Main\Model\Entry $entry */
 $entry = $this->entry;
 ?>
-<div class="jumbotron py-4">
+<div class="jumbotron py-4 mb-3">
     <h1 class="display-4"><?= $entry->getName() ?></h1>
     <p class="lead"><?= $entry->getDescription() ?></p>
     <hr class="my-4">
@@ -17,3 +17,4 @@ $entry = $this->entry;
 
     <p><?= $this->linkTo('Następne hasło &raquo;', '/random', [ 'class' => 'btn btn-success' ]) ?></p>
 </div>
+<div class="alert alert-warning text-right"><?= $this->linkTo('edycja hasła', '/entries/edit/' . $entry->id(), [ 'class' => 'btn btn-warning btn-sm' ]) ?></div>

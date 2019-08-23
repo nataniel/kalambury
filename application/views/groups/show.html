@@ -1,22 +1,22 @@
 <?php
-/** @var \Main\View\Base $this */
+/** @var Main\View\Base $this */
 $form = $this->createBootstrapForm($this->form);
 
-/** @var \Main\Model\Entry\Group $group */
+/** @var Main\Model\Entry\Group $group */
 $group = $this->group;
 $entries = $group->getEntries();
 
 $difficulties = [
-    \Main\Model\Entry::DIFFICULTY_LOW => 0,
-    \Main\Model\Entry::DIFFICULTY_MEDIUM => 0,
-    \Main\Model\Entry::DIFFICULTY_HIGH => 0,
+    Main\Model\Entry::DIFFICULTY_LOW => 0,
+    Main\Model\Entry::DIFFICULTY_MEDIUM => 0,
+    Main\Model\Entry::DIFFICULTY_HIGH => 0,
 ];
 
 foreach ($entries as $entry) {
     $difficulties[ $entry->getDifficulty() ]++;
 }
 
-/** @var \Main\Model\Settings $settings */
+/** @var Main\Model\Settings $settings */
 $settings = $this->settings;
 ?>
 <p class="text-right">
