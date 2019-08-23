@@ -1,4 +1,7 @@
-<? if ($flash = $this->getFlash()): ?>
+<?php
+/** @var Main\View\Base $this */
+?>
+<?php if ($flash = $this->getFlash()): ?>
 
     <div id="flash">
         <? if (!empty($flash['message'])): ?>
@@ -21,4 +24,4 @@
         <? endif; ?>
     </div>
 
-<? endif; ?>
+<?php endif; ?>
