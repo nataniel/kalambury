@@ -16,5 +16,15 @@ return [
     'base_url' => 'http://www.xpect.pl/kalambury/',
     'ssl_required' => false,
 
+    /**
+     * Doctrine configuration settings for Entity Manager
+     * @link http://docs.doctrine-project.org/en/2.0.x/reference/configuration.html
+     */
+    'doctrine' => [
+        'auto_generate_proxies' => false,
+        'cache_class' => \Doctrine\Common\Cache\ApcuCache::class,
+        'cache_namespace' => 'adventure',
+    ],
+
     'show_errors' => false,
 ];
